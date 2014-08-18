@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   tasks:
+    - name: Remove quick boot 
+      lineinfile: dest=/etc/grub.d/10_linux regexp='quick_boot=' line='quick_boot="0"'
+      tags: [grub, patch]
+    - name: Update grub
+      command: update-grub
+      tags: [grub, patch]
